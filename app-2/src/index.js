@@ -8,6 +8,15 @@ import ApprovalCard from './ApprovalCard';
 const App = () => {
     return (
         <div className="ui container comments"> 
+            {/* passing in plain HTML as props.children */}
+            <ApprovalCard>
+                <div>
+                    <h4>WARNING!</h4>
+                    Are you sure you want to do this?
+                </div>
+            </ApprovalCard>
+
+            {/* passing in another component as props.children */}
             <ApprovalCard>
                 <CommentDetail 
                     author="Ben" 
@@ -25,7 +34,7 @@ const App = () => {
                     img={faker.image.avatar()} 
                 />
             </ApprovalCard>
-            
+
             <ApprovalCard>
                 <CommentDetail 
                     author="Noms" 
