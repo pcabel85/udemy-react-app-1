@@ -8,8 +8,10 @@ class App extends React.Component {
     constructor(props) { //First function called when component is init'd 
         super(props);    //Passes in parent's (React.Component) constructor function   
 
+        // Set default properites for state
         this.state = {
-            lat: null
+            lat: null,
+            errorMsg: ''
         };
 
         window.navigator.geolocation.getCurrentPosition(
@@ -17,13 +19,21 @@ class App extends React.Component {
                 // Called setState to update our component!!!
                 this.setState({ lat: position.coords.latitude })
             },
-            (err) => console.log(err)  
+            err => {
+                this.setState({ errorMsg: err.message })
+            }  
         )
     }
 
     //We always have to define render()!!!
     render(){
-        return <div>Latitude: {this.state.lat}</div>
+        if (this.state.errorMsg && !this.state.lat ){
+            return <div>Error: { this.state.errorMsg }</div>
+        }
+        if (this.state.lat && !this.state.errorMsg ){
+            return <div>Latitude: { this.state.lat }</div>
+        }
+        return <div>Loading...</div>
     }
 }
 
