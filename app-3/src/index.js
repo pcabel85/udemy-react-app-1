@@ -13,7 +13,10 @@ class App extends React.Component {
             lat: null,
             errorMsg: ''
         };
+    }
 
+    // Use DidMount for data loading
+    componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
             position => {
                 // Called setState to update our component!!!
