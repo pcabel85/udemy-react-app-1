@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
 
 //Converted App from a functional component to a Class based component to
 //take advantage of React.Component's built in methods.
@@ -30,7 +31,7 @@ class App extends React.Component {
         if (this.state.lat && !this.state.errorMsg ){
             return <SeasonDisplay lat={ this.state.lat }/>
         }
-        return <div>Loading...</div>
+        return <Loader/>
     }
 }
 
