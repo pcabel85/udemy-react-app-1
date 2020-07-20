@@ -22,9 +22,11 @@ const getSeason = (lat, month) => {
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.lat, new Date().getMonth())
+    //Destructuring the seasonConfig object to use dynamic season
     const {text, iconName} = seasonConfig[season];
     
     return (
+        // Use backticks to use a JS variable within a JSX attribute
         <div className={`season-display ${season}`}>
             <i className={`${iconName} icon massive icon-left`} />
             <h1>{text}</h1>

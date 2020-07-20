@@ -23,15 +23,25 @@ class App extends React.Component {
         )
     }
 
-    //We always have to define render()!!!
-    render(){
+    //Created helper function to enclose JSX logic
+    renderContent() {
         if (this.state.errorMsg && !this.state.lat ){
             return <div>Error: { this.state.errorMsg }</div>
         }
         if (this.state.lat && !this.state.errorMsg ){
             return <SeasonDisplay lat={ this.state.lat }/>
         }
-        return <Loader/>
+        return <Loader message="Please accept location request"/>
+    }
+
+    //We always have to define render()!!!
+    render(){
+        return(
+            <div className="container">
+                {/* Calling renderContent helper function here */}
+                {this.renderContent()}
+            </div>
+        )
     }
 }
 
